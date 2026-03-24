@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+      max-width: 400px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background: #ff2e63;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff4f7a;
+    }
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 Prompt Generator</h1>
+
+    <select id="category">
+      <option value="cinematic">Cinematic</option>
+      <option value="aesthetic">Instagram Aesthetic</option>
+      <option value="car">Car Edit</option>
+      <option value="portrait">Portrait</option>
+    </select>
+
+    <button onclick="generatePrompt()">Generate Prompt</button>
+
+    <textarea id="output" readonly placeholder="Your prompt will appear here..."></textarea>
+
+    <button onclick="copyPrompt()">Copy</button>
+  </div>
+
+  <script>
+    const prompts = {
+      cinematic: "Ultra cinematic lighting, dramatic shadows, high contrast, 4K, film grain, moody atmosphere",
+      aesthetic: "Soft pastel tones, glowing highlights, Instagram aesthetic, smooth skin, dreamy vibe",
+      car: "Luxury sports car, neon lights, night city, reflections, cinematic angle, ultra realistic",
+      portrait: "DSLR portrait, sharp focus, natural skin texture, soft lighting, bokeh background"
+    };
+
+    function generatePrompt() {
+      const category = document.getElementById("category").value;
+      document.getElementById("output").value = prompts[category];
+    }
+
+    function copyPrompt() {
+      const text = document.getElementById("output");
+      text.select();
+      document.execCommand("copy");
+      alert("Copied!");
+    }
+  </script>
+</body>
+</html>
